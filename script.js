@@ -1,5 +1,7 @@
 let runnerImg = document.querySelector("#runnerImg")
-let coolBtn = document.querySelector("#coolBtn")
+let coolBtn = document.querySelector("#resizeBtn")
+let discoBtn = document.querySelector("#discoBtn")
+let body = document.querySelector("body")
 runnerImg.style.width = "80%"
 
 function coolFunction(e) {
@@ -13,3 +15,7 @@ function coolFunction(e) {
 }
 
 coolBtn.addEventListener('click', coolFunction)
+discoBtn.addEventListener('click', e => {
+    var randomColor = Math.floor(Math.random()*16777215).toString(16);
+    body.style.backgroundColor = "#" + randomColor
+})

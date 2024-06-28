@@ -19,7 +19,7 @@ body p {
 
 #imageContainer {
     margin: auto;
-    width: 1500px;
+    width:50vw;
     display: flex;
     flex-direction: column;
 }
@@ -35,11 +35,11 @@ body p {
     box-sizing: border-box;
 }
 
-#coolBtn {
+.styleBtn {
     width: fit-content;
     height: fit-content;
     padding: 10px;
     font-size: larger;
-    margin: auto;
+    margin: 10px auto;
     display: block;
 }
