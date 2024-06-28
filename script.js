@@ -2,6 +2,8 @@ let runnerImg = document.querySelector("#runnerImg")
 let coolBtn = document.querySelector("#resizeBtn")
 let discoBtn = document.querySelector("#discoBtn")
 let body = document.querySelector("body")
+let p1 = document.querySelector("#p1")
+
 runnerImg.style.width = "80%"
 
 function coolFunction(e) {
@@ -19,3 +21,5 @@ discoBtn.addEventListener('click', e => {
     var randomColor = Math.floor(Math.random()*16777215).toString(16);
     body.style.backgroundColor = "#" + randomColor
 })
+
+setTimeout(() => p1.textContent = "Timeout!", 3000)
