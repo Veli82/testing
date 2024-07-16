@@ -10,7 +10,15 @@ let addImgBtn = document.querySelector("#addImgBtn")
 let imgUrl = document.querySelector("#imgGenUrl")
 let imgCaption = document.querySelector("#imgCaption")
 let imgContainer = document.querySelector("#imageContainer")
+let percentInput = document.querySelector("#percentInput")
 
+
+//random setup
+for (image of imgContainer.children) {
+    image.style.width = "80%"
+}
+setTimeout(() => p1.textContent = "Timeout!", 3000)
+percentInput.value = "10"
 let currWidth = "80%"
 
 
@@ -19,9 +27,9 @@ let currWidth = "80%"
 
 function shrinkImg() {
     currWidth = currWidth.replace("%", "")
-    let newWidth = Number(currWidth) - 10
-    if (newWidth < 10) imgContainer.remove()
-        newWidth = newWidth + "%"
+    let newWidth = Number(currWidth) - Number(percentInput.value)
+    if (newWidth < 10) return
+    newWidth = newWidth + "%"
     currWidth = newWidth
     for (image of imgContainer.children) {
         image.style.width = newWidth
@@ -31,9 +39,9 @@ function shrinkImg() {
 
 function expandImg() {
     currWidth = currWidth.replace("%", "")
-    let newWidth = Number(currWidth) + 10
-    if (newWidth < 10) imgContainer.remove()
-        newWidth = newWidth + "%"
+    let newWidth = Number(currWidth) + Number(percentInput.value)
+    if (newWidth < 10) return
+    newWidth = newWidth + "%"
     currWidth = newWidth
     for (image of imgContainer.children) {
         image.style.width = newWidth
@@ -47,14 +55,6 @@ function addPicture() {
     newImg.style.width = currWidth
     imgContainer.prepend(newImg)
 }
-
-
-
-//random setup
-for (image of imgContainer.children) {
-    image.style.width = "80%"
-}
-setTimeout(() => p1.textContent = "Timeout!", 3000)
 
 
 //eventListeners

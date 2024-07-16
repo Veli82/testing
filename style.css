@@ -62,3 +62,9 @@ body #p1 {
 input {
     width: 80%;
 }
+
+#percentInput {
+    width: 100px;
+    margin: auto;
+    display: block
+}
