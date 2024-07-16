@@ -1,6 +1,8 @@
 // variable declarations
 let runnerImg = document.querySelector("#runnerImg")
-let coolBtn = document.querySelector("#resizeBtn")
+let roskataImg = document.querySelector("#roskataImg")
+let shrinkBtn = document.querySelector("#shrinkBtn")
+let expandBtn = document.querySelector("#expandBtn")
 let discoBtn = document.querySelector("#discoBtn")
 let body = document.querySelector("body")
 let p1 = document.querySelector("#p1")
@@ -9,30 +11,55 @@ let imgUrl = document.querySelector("#imgGenUrl")
 let imgCaption = document.querySelector("#imgCaption")
 let imgContainer = document.querySelector("#imageContainer")
 
+let currWidth = "80%"
+
+
+
 //function declarations
-function coolFunction(e) {
-    currWidth = runnerImg.style.width
+
+function shrinkImg() {
     currWidth = currWidth.replace("%", "")
     let newWidth = Number(currWidth) - 10
-    if (newWidth < 10) runnerImg.remove()
-    newWidth = newWidth + "%"
-    runnerImg.style.width = newWidth
+    if (newWidth < 10) imgContainer.remove()
+        newWidth = newWidth + "%"
+    currWidth = newWidth
+    for (image of imgContainer.children) {
+        image.style.width = newWidth
+    }
+
+}
+
+function expandImg() {
+    currWidth = currWidth.replace("%", "")
+    let newWidth = Number(currWidth) + 10
+    if (newWidth < 10) imgContainer.remove()
+        newWidth = newWidth + "%"
+    currWidth = newWidth
+    for (image of imgContainer.children) {
+        image.style.width = newWidth
+    }
 }
 
 function addPicture() {
     let newImg = document.createElement('img')
     newImg.setAttribute("src",imgUrl.value)
-    newImg.setAttribute("alt",imgCaption.value) 
-    imgContainer.appendChild(newImg)
+    newImg.setAttribute("alt",imgCaption.value)
+    newImg.style.width = currWidth
+    imgContainer.prepend(newImg)
 }
 
+
+
 //random setup
-runnerImg.style.width = "80%"
+for (image of imgContainer.children) {
+    image.style.width = "80%"
+}
 setTimeout(() => p1.textContent = "Timeout!", 3000)
 
 
 //eventListeners
-coolBtn.addEventListener('click', coolFunction)
+shrinkBtn.addEventListener('click', shrinkImg)
+expandBtn.addEventListener('click', expandImg)
 discoBtn.addEventListener('click', e => {
     var randomColor = Math.floor(Math.random()*16777215).toString(16);
     body.style.backgroundColor = "#" + randomColor
